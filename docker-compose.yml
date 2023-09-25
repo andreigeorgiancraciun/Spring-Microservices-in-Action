@@ -1,4 +1,4 @@
-version: '3'
+version: '3.8'
 
 services:
   database:
@@ -33,16 +33,52 @@ services:
         aliases:
           - "configserver"
 
+  eurekaserver:
+    image: andreicraciun/eurekaserver:0.0.1-SNAPSHOT
+    ports:
+      - "8070:8070"
+    depends_on:
+      database:
+        condition: service_healthy
+      configserver:
+        condition: service_started
+    networks:
+      backend:
+        aliases:
+          - "eurekaserver"
+
   licensingservice:
     image: andreicraciun/licensing-service:0.0.1-SNAPSHOT
     ports:
       - "8080:8080"
+      - "5005:5005"
     environment:
       PROFILE: "dev"
       CONFIGSERVER_URI: "http://configserver:8071"
       CONFIGSERVER_PORT: "8071"
       DATABASESERVER_PORT: "5432"
       ENCRYPT_KEY: "IMSYMMETRIC"
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+    depends_on:
+      database:
+        condition: service_healthy
+      configserver:
+        condition: service_started
+    networks:
+      - backend
+
+  organizationservice:
+    image: andreicraciun/organization-service:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8081"
+      - "5006:5006"
+    environment:
+      PROFILE: "dev"
+      CONFIGSERVER_URI: "http://configserver:8071"
+      CONFIGSERVER_PORT: "8071"
+      DATABASESERVER_PORT: "5432"
+      ENCRYPT_KEY: "IMSYMMETRIC"
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5006
     depends_on:
       database:
         condition: service_healthy
