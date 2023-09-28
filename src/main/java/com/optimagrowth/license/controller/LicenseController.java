@@ -10,6 +10,7 @@ import com.optimagrowth.license.model.License;
 import com.optimagrowth.license.service.LicenseService;
 
 import java.util.List;
+import java.util.concurrent.TimeoutException;
 
 @RestController
 @RequestMapping(value = "v1/organization/{organizationId}/license")
@@ -60,7 +61,7 @@ public class LicenseController {
     }
 
     @GetMapping()
-    public List<License> getLicenses(@PathVariable("organizationId") String organizationId) {
+    public List<License> getLicenses(@PathVariable("organizationId") String organizationId) throws TimeoutException {
         return licenseService.getLicensesByOrganization(organizationId);
     }
 }
