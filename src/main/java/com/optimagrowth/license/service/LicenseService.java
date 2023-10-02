@@ -50,6 +50,9 @@ public class LicenseService {
     }
 
     public License getLicense(String licenseId, String organizationId, String clientType) {
+        logger.debug("getLicense Correlation id: {}",
+                UserContextHolder.getContext().getCorrelationId());
+
         License license = licenseRepository.findByOrganizationIdAndLicenseId(organizationId, licenseId);
 
         if (null == license) {

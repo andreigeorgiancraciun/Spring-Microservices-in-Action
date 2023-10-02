@@ -47,6 +47,31 @@ services:
         aliases:
           - "eurekaserver"
 
+  gatewayserver:
+    image: andreicraciun/gatewayserver:0.0.1-SNAPSHOT
+    ports:
+      - "8072:8072"
+      - "5007:5007"
+    environment:
+      PROFILE: "default"
+      SERVER_PORT: "8072"
+      CONFIGSERVER_URI: "http://configserver:8071"
+      EUREKASERVER_URI: "http://eurekaserver:8070/eureka/"
+      EUREKASERVER_PORT: "8070"
+      CONFIGSERVER_PORT: "8071"
+      JAVA_TOOL_OPTIONS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5007
+    depends_on:
+      database:
+        condition: service_healthy
+      configserver:
+        condition: service_started
+      eurekaserver:
+        condition: service_started
+    networks:
+      backend:
+        aliases:
+          - "gateway"
+
   licensingservice:
     image: andreicraciun/licensing-service:0.0.1-SNAPSHOT
     ports:

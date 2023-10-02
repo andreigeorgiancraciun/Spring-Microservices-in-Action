@@ -60,7 +60,7 @@ public class LicenseController {
         return ResponseEntity.ok(licenseService.deleteLicense(licenseId, organizationId));
     }
 
-    @GetMapping()
+    @GetMapping
     public List<License> getLicenses(@PathVariable("organizationId") String organizationId) throws TimeoutException {
         return licenseService.getLicensesByOrganization(organizationId);
     }

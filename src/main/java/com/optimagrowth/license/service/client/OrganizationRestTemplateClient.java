@@ -1,6 +1,10 @@
 package com.optimagrowth.license.service.client;
 
 import com.optimagrowth.license.model.Organization;
+import com.optimagrowth.license.service.utils.UserContextFilter;
+import com.optimagrowth.license.service.utils.UserContextHolder;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -16,11 +20,16 @@ public class OrganizationRestTemplateClient {
     }
 
     public Organization getOrganization(String organizationId) {
+        HttpHeaders httpHeaders = new HttpHeaders();
+        httpHeaders.set(UserContextFilter.CORRELATION_ID, UserContextHolder.getContext().getCorrelationId());
+
+        HttpEntity<Void> httpEntity = new HttpEntity<>(httpHeaders);
+
         ResponseEntity<Organization> restExchange =
                 restTemplate.exchange(
                         "http://organization-service/v1/organization/{organizationId}",
                         HttpMethod.GET,
-                        null, Organization.class, organizationId);
+                        httpEntity, Organization.class, organizationId);
 
         return restExchange.getBody();
     }

@@ -10,7 +10,11 @@ import java.io.IOException;
 
 @Component
 public class UserContextFilter implements Filter {
-    private static final Logger logger = LoggerFactory.getLogger(UserContextFilter.class);
+    public static final String CORRELATION_ID = "tmx-correlation-id";
+    public static final String AUTH_TOKEN = "tmx-auth-token";
+    public static final String USER_ID = "tmx-user-id";
+    public static final String ORGANIZATION_ID = "tmx-organization-id";
+    public static final Logger logger = LoggerFactory.getLogger(UserContextFilter.class);
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
@@ -18,10 +22,10 @@ public class UserContextFilter implements Filter {
 
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
 
-        UserContextHolder.getContext().setCorrelationId(httpServletRequest.getHeader(UserContext.CORRELATION_ID));
-        UserContextHolder.getContext().setUserId(httpServletRequest.getHeader(UserContext.USER_ID));
-        UserContextHolder.getContext().setAuthToken(httpServletRequest.getHeader(UserContext.AUTH_TOKEN));
-        UserContextHolder.getContext().setOrganizationId(httpServletRequest.getHeader(UserContext.ORGANIZATION_ID));
+        UserContextHolder.getContext().setCorrelationId(httpServletRequest.getHeader(CORRELATION_ID));
+        UserContextHolder.getContext().setUserId(httpServletRequest.getHeader(USER_ID));
+        UserContextHolder.getContext().setAuthToken(httpServletRequest.getHeader(AUTH_TOKEN));
+        UserContextHolder.getContext().setOrganizationId(httpServletRequest.getHeader(ORGANIZATION_ID));
 
         logger.debug("UserContextFilter Correlation id: {}", UserContextHolder.getContext().getCorrelationId());
 
