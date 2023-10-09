@@ -75,7 +75,7 @@ services:
   licensingservice:
     image: andreicraciun/licensing-service:0.0.1-SNAPSHOT
     ports:
-      - "8080:8080"
+      - "8180:8080"
       - "5005:5005"
     environment:
       PROFILE: "dev"
@@ -111,6 +111,30 @@ services:
         condition: service_started
     networks:
       - backend
+
+  keycloak:
+    image: bitnami/keycloak
+    restart: always
+    environment:
+      KEYCLOAK_ADMIN_USER: admin
+      KEYCLOAK_ADMIN_PASSWORD: bitnami
+      KEYCLOAK_DATABASE_HOST: database
+      KEYCLOAK_DATABASE_PORT: 5432
+      KEYCLOAK_DATABASE_NAME: ostock_dev
+      KEYCLOAK_DATABASE_USER: postgres
+      KEYCLOAK_DATABASE_PASSWORD: postgres
+      KEYCLOAK_DATABASE_SCHEMA: keycloak
+    volumes:
+      - ./realm-export.json:/bitnami/keycloak/realm-config/
+    depends_on:
+      database:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    networks:
+      backend:
+        aliases:
+          - "keycloak"
 
 networks:
   backend:

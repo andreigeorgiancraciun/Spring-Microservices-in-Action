@@ -1,3 +1,4 @@
+-- Create organizations table in the public schema
 CREATE TABLE IF NOT EXISTS public.organizations
 (
     organization_id text COLLATE pg_catalog."default" NOT NULL,
@@ -9,10 +10,11 @@ CREATE TABLE IF NOT EXISTS public.organizations
 )
     TABLESPACE pg_default;
 
+-- Set ownership of the organizations table to the postgres user
 ALTER TABLE public.organizations
     OWNER to postgres;
 
-
+-- Create licenses table in the public schema
 CREATE TABLE IF NOT EXISTS public.licenses
 (
     license_id      text COLLATE pg_catalog."default" NOT NULL,
@@ -26,9 +28,17 @@ CREATE TABLE IF NOT EXISTS public.licenses
         REFERENCES public.organizations (organization_id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-        NOT VALID
+        DEFERRABLE INITIALLY IMMEDIATE
 )
     TABLESPACE pg_default;
 
+-- Set ownership of the licenses table to the postgres user
 ALTER TABLE public.licenses
+    OWNER to postgres;
+
+-- Create the keycloak schema
+CREATE SCHEMA IF NOT EXISTS keycloak;
+
+-- Set ownership of the keycloak schema to the postgres user
+ALTER SCHEMA keycloak
     OWNER to postgres;

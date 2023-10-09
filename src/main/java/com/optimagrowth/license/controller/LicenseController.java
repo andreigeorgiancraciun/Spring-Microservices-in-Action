@@ -1,11 +1,7 @@
 package com.optimagrowth.license.controller;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import com.optimagrowth.license.model.License;
 import com.optimagrowth.license.service.LicenseService;
 
@@ -24,25 +20,20 @@ public class LicenseController {
 
     @GetMapping(value = "/{licenseId}")
     public ResponseEntity<License> getLicense(@PathVariable("organizationId") String organizationId,
-                                              @PathVariable("licenseId") String licenseId) {
+                                              @PathVariable("licenseId") String licenseId,
+                                              @RequestHeader("Authorization") String authorization) {
 
-        License license = licenseService.getLicense(licenseId, organizationId, "");
-        license.add(
-                linkTo(methodOn(LicenseController.class).getLicense(organizationId, license.getLicenseId())).withSelfRel(),
-                linkTo(methodOn(LicenseController.class).createLicense(license)).withRel("createLicense"),
-                linkTo(methodOn(LicenseController.class).updateLicense(license)).withRel("updateLicense"),
-                linkTo(methodOn(LicenseController.class).deleteLicense(license.getLicenseId(), organizationId)).withRel("deleteLicense")
-        );
-
+        License license = licenseService.getLicense(licenseId, organizationId, "", authorization);
         return ResponseEntity.ok(license);
     }
 
     @GetMapping(value = "/{licenseId}/{clientType}")
     public License getLicensesWithClient(@PathVariable("organizationId") String organizationId,
                                          @PathVariable("licenseId") String licenseId,
-                                         @PathVariable("clientType") String clientType) {
+                                         @PathVariable("clientType") String clientType,
+                                         @RequestHeader("Authorization") String authorization) {
 
-        return licenseService.getLicense(licenseId, organizationId, clientType);
+        return licenseService.getLicense(licenseId, organizationId, clientType, authorization);
     }
 
     @PutMapping

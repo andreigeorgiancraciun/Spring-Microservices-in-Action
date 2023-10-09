@@ -49,7 +49,7 @@ public class LicenseService {
         this.organizationDiscoveryClient = organizationDiscoveryClient;
     }
 
-    public License getLicense(String licenseId, String organizationId, String clientType) {
+    public License getLicense(String licenseId, String organizationId, String clientType, String authorization) {
         logger.debug("getLicense Correlation id: {}",
                 UserContextHolder.getContext().getCorrelationId());
 
@@ -61,7 +61,7 @@ public class LicenseService {
                             licenseId, organizationId));
         }
 
-        Organization organization = retrieveOrganizationInfo(organizationId, clientType);
+        Organization organization = retrieveOrganizationInfo(organizationId, clientType, authorization);
 
         if (null != organization) {
             license.setOrganizationName(organization.getName());
@@ -106,22 +106,22 @@ public class LicenseService {
         return licenseRepository.findByOrganizationId(organizationId);
     }
 
-    private Organization retrieveOrganizationInfo(String organizationId, String clientType) {
+    private Organization retrieveOrganizationInfo(String organizationId, String clientType, String authorization) {
 
         return switch (clientType) {
             case "feign" -> {
                 logger.debug("I am using the feign client");
-                yield organizationFeignClient.getOrganization(organizationId);
+                yield organizationFeignClient.getOrganization(organizationId, authorization);
             }
             case "rest" -> {
                 logger.debug("I am using the rest client");
-                yield organizationRestClient.getOrganization(organizationId);
+                yield organizationRestClient.getOrganization(organizationId, authorization);
             }
             case "discovery" -> {
                 logger.debug("I am using the discovery client");
-                yield organizationDiscoveryClient.getOrganization(organizationId);
+                yield organizationDiscoveryClient.getOrganization(organizationId, authorization);
             }
-            default -> organizationRestClient.getOrganization(organizationId);
+            default -> organizationRestClient.getOrganization(organizationId, authorization);
         };
     }
 

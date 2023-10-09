@@ -19,9 +19,10 @@ public class OrganizationRestTemplateClient {
         this.restTemplate = restTemplate;
     }
 
-    public Organization getOrganization(String organizationId) {
+    public Organization getOrganization(String organizationId, String authorization) {
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.set(UserContextFilter.CORRELATION_ID, UserContextHolder.getContext().getCorrelationId());
+        httpHeaders.set(HttpHeaders.AUTHORIZATION, authorization);
 
         HttpEntity<Void> httpEntity = new HttpEntity<>(httpHeaders);
 
@@ -29,7 +30,9 @@ public class OrganizationRestTemplateClient {
                 restTemplate.exchange(
                         "http://organization-service/v1/organization/{organizationId}",
                         HttpMethod.GET,
-                        httpEntity, Organization.class, organizationId);
+                        httpEntity,
+                        Organization.class,
+                        organizationId);
 
         return restExchange.getBody();
     }
