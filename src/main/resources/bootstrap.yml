@@ -37,6 +37,7 @@ resilience4j.circuitbreaker:
       permitted-number-of-calls-in-half-open-state: 3
       waitDurationInOpenState: 20s
       failureRateThreshold: 60
+
 resilience4j.ratelimiter:
   instances:
     licenseService:
@@ -57,7 +58,6 @@ resilience4j.bulkhead:
     bulkheadLicenseService:
       maxWaitDuration: 2ms
       maxConcurrentCalls: 20
-
 
 resilience4j.thread-pool-bulkhead:
   instances:

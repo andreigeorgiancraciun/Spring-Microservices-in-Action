@@ -1,8 +1,8 @@
 package com.optimagrowth.license.service.client;
 
 import com.optimagrowth.license.model.Organization;
-import com.optimagrowth.license.service.utils.UserContextFilter;
-import com.optimagrowth.license.service.utils.UserContextHolder;
+import com.optimagrowth.license.utils.UserContextFilter;
+import com.optimagrowth.license.utils.UserContextHolder;
 import org.springframework.cloud.client.ServiceInstance;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.http.HttpEntity;

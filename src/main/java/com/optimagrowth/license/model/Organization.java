@@ -4,13 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.hateoas.RepresentationModel;
+import org.springframework.data.redis.core.RedisHash;
 
 @Getter
 @Setter
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class Organization extends RepresentationModel<Organization> {
+@RedisHash("organization")
+public class Organization {
     String id;
     String name;
     String contactName;
