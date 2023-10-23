@@ -58,7 +58,7 @@ public class OrganizationRestTemplateClient {
             cacheOrganizationObject(organization);
         }
 
-        return restExchange.getBody();
+        return organization;
     }
 
     private Organization checkRedisCache(String organizationId) {

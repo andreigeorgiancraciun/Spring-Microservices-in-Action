@@ -27,19 +27,28 @@ public class KafkaConsumerService {
 
         switch (organizationChangeModel.getAction()) {
             case "GET":
-                logger.debug("Received a GET event from the organization service for organization id {}", organization.getId());
+                logger.debug("Received a GET event from the organization service for organization id {}. No need to update Redis", organization.getId());
                 break;
             case "SAVE":
-                logger.debug("Received a SAVE event from the organization service for organization id {}", organization.getId());
-                redisRepository.save(organization);
+                logger.debug("Received a SAVE event from the organization service for organization id {}. No need to update Redis", organization.getId());
                 break;
             case "UPDATE":
-                logger.debug("Received a UPDATE event from the organization service for organization id {}", organization.getId());
-                redisRepository.save(organization);
+                logger.debug("Received an UPDATE event from the organization service for organization id {}", organization.getId());
+                if (redisRepository.findById(organization.getId()).isPresent()) {
+                    logger.debug("The organization with id {} is present in Redis. Updating Redis...", organization.getId());
+                    redisRepository.save(organization);
+                } else {
+                    logger.debug("The organization with id {} is not present in Redis. No need to update Redis", organization.getId());
+                }
                 break;
             case "DELETE":
                 logger.debug("Received a DELETE event from the organization service for organization id {}", organization.getId());
-                redisRepository.deleteById(organization.getId());
+                if (redisRepository.findById(organization.getId()).isPresent()) {
+                    logger.debug("The organization with id {} is present in Redis. Updating Redis...", organization.getId());
+                    redisRepository.deleteById(organization.getId());
+                } else {
+                    logger.debug("The organization with id {} is not present in Redis. No need to update Redis", organization.getId());
+                }
                 break;
             default:
                 logger.error("Received an UNKNOWN event from the organization service of type {}", organizationChangeModel.getType());

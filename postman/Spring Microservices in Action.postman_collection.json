@@ -1,0 +1,783 @@
+{
+	"info": {
+		"_postman_id": "d1f42c03-443d-4495-ad33-133851a65ff4",
+		"name": "Spring Microservices in Action",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10349152"
+	},
+	"item": [
+		{
+			"name": "Token",
+			"item": [
+				{
+					"name": "GET TOKEN FOR ADMIN",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "SueD1Oc99EU20trDAJIi5uj6GYO9Hskg",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "ostock",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "illary.huaylupo",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/spmia-realm/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"spmia-realm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET TOKEN FOR USER",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "SueD1Oc99EU20trDAJIi5uj6GYO9Hskg",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "ostock",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "grant_type",
+									"value": "password",
+									"type": "text"
+								},
+								{
+									"key": "username",
+									"value": "john.carnell",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "password1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/realms/spmia-realm/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"realms",
+								"spmia-realm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Gateway",
+			"item": [
+				{
+					"name": "Get License Gateway",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY4NDM4MTAsImlhdCI6MTY5Njg0MzUxMCwianRpIjoiOThhMGVmNGQtMjk5Mi00YzU5LTk3ZGYtNGIxNDFlOWVjNTYxIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjBkMjcwNDhhLWU4YzMtNGRkOC04NTBlLTZkMmYwYjlkZWVjYSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiI1OTAxNjY5NC1jMTczLTQyZDQtYjNkNS01MGRlZTRjNTdjNTAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJvc3RvY2siOnsicm9sZXMiOlsiQURNSU4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjU5MDE2Njk0LWMxNzMtNDJkNC1iM2Q1LTUwZGVlNGM1N2M1MCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJpbGxhcnkuaHVheWx1cG8iLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIifQ.NyiJo1wvV8hrJh8okA-y5EvWtaQMx6zlVuTPTaJJuNadPfSMkfp48lOQtRRfIxC-aQvjeBnDV9n_kITcmYy9sZAtvRCF-FO_e0EtzxjisC7Bm6GL7hTIwUz51tCU2PHAoWduxQslmJvbvzh24WBeW0jaDgbxjHfZhVLiEUsCII2TZF7wAQVCesMK-ZSMKTV4iTY61Y0GU-XHN4nYXKfGHTzdRdovwq0Mo-vgqe9Vf5ae15TUCz4FOVTRhvhjBU4jDKYUZ3u_NXxhUX5UV8izhd2aTZSxGG0Dd-i8pXx9jmTrVqmtXIx9WjvWMhOTDlb82S1cjkGU1BTqoxMvj-gpuA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "tmx-correlation-id",
+								"value": "e3f6a72b-7d6c-41da-ac12-fb30fcd1e547",
+								"type": "text"
+							},
+							{
+								"key": "Authentication",
+								"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY3NTA0OTcsImlhdCI6MTY5Njc1MDE5NywianRpIjoiNGU5Y2ExOGEtMWQzMy00MmUzLWJmYjQtMzBlM2JkZTVlNmQzIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjBkMjcwNDhhLWU4YzMtNGRkOC04NTBlLTZkMmYwYjlkZWVjYSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiI4YWI5MzIwYy03MzFhLTQzZjMtYjQ3NS0zYTQ3MjBmYzU5NWMiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJvc3RvY2siOnsicm9sZXMiOlsiQURNSU4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjhhYjkzMjBjLTczMWEtNDNmMy1iNDc1LTNhNDcyMGZjNTk1YyIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJpbGxhcnkuaHVheWx1cG8iLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIifQ.eqSo86juNy7qJgenenC-PcCnsC-g4mrZlu2DZSGFeRhbN-oz3Wnmy9JAeWGpSxDGeqaOJ9jDHvwsZwsWvCVVAOqgsaHL9cC2RwwwoAn5EhCdmQxydiW_n0No81pxIyKM-AJK_e6Nyq_BTt1SA6NP0o-CsqZl5vDB6f1GqEeHFUuymJu8VqSMirXA2Wp8cP5ptp7zQKTbftqB4KlLMZRXKjrSvPmSZOzOZSUZ05rHCCoZnt_DY72_Jl6VuJzcwQIid04XNGYPtQKqE4ouyyTluta4cML4Iyfb4krMgCPhzIAyUo7bP5LbxSic0R6Nn0z2kXHZGgJgkliLHD50MsaNdw",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8072/license/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license/f2a9c9d4-d2c0-44fa-97fe-724d77173c62",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8072",
+							"path": [
+								"license",
+								"v1",
+								"organization",
+								"d898a142-de44-466c-8c88-9ceb2c2429d3",
+								"license",
+								"f2a9c9d4-d2c0-44fa-97fe-724d77173c62"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Organization Gateway",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY4NDM4MTAsImlhdCI6MTY5Njg0MzUxMCwianRpIjoiOThhMGVmNGQtMjk5Mi00YzU5LTk3ZGYtNGIxNDFlOWVjNTYxIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjBkMjcwNDhhLWU4YzMtNGRkOC04NTBlLTZkMmYwYjlkZWVjYSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiI1OTAxNjY5NC1jMTczLTQyZDQtYjNkNS01MGRlZTRjNTdjNTAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJvc3RvY2siOnsicm9sZXMiOlsiQURNSU4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjU5MDE2Njk0LWMxNzMtNDJkNC1iM2Q1LTUwZGVlNGM1N2M1MCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJpbGxhcnkuaHVheWx1cG8iLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIifQ.NyiJo1wvV8hrJh8okA-y5EvWtaQMx6zlVuTPTaJJuNadPfSMkfp48lOQtRRfIxC-aQvjeBnDV9n_kITcmYy9sZAtvRCF-FO_e0EtzxjisC7Bm6GL7hTIwUz51tCU2PHAoWduxQslmJvbvzh24WBeW0jaDgbxjHfZhVLiEUsCII2TZF7wAQVCesMK-ZSMKTV4iTY61Y0GU-XHN4nYXKfGHTzdRdovwq0Mo-vgqe9Vf5ae15TUCz4FOVTRhvhjBU4jDKYUZ3u_NXxhUX5UV8izhd2aTZSxGG0Dd-i8pXx9jmTrVqmtXIx9WjvWMhOTDlb82S1cjkGU1BTqoxMvj-gpuA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "tmx-correlation-id",
+								"value": "e3f6a72b-7d6c-41da-ac12-fb30fcd1e547",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8072/organization/v1/organization/e6a625cc-718b-48c2-ac76-1dfdff9a531e",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8072",
+							"path": [
+								"organization",
+								"v1",
+								"organization",
+								"e6a625cc-718b-48c2-ac76-1dfdff9a531e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get License by Organization Gateway",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY4NDM4MTAsImlhdCI6MTY5Njg0MzUxMCwianRpIjoiOThhMGVmNGQtMjk5Mi00YzU5LTk3ZGYtNGIxNDFlOWVjNTYxIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjBkMjcwNDhhLWU4YzMtNGRkOC04NTBlLTZkMmYwYjlkZWVjYSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiI1OTAxNjY5NC1jMTczLTQyZDQtYjNkNS01MGRlZTRjNTdjNTAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJvc3RvY2siOnsicm9sZXMiOlsiQURNSU4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjU5MDE2Njk0LWMxNzMtNDJkNC1iM2Q1LTUwZGVlNGM1N2M1MCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJpbGxhcnkuaHVheWx1cG8iLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIifQ.NyiJo1wvV8hrJh8okA-y5EvWtaQMx6zlVuTPTaJJuNadPfSMkfp48lOQtRRfIxC-aQvjeBnDV9n_kITcmYy9sZAtvRCF-FO_e0EtzxjisC7Bm6GL7hTIwUz51tCU2PHAoWduxQslmJvbvzh24WBeW0jaDgbxjHfZhVLiEUsCII2TZF7wAQVCesMK-ZSMKTV4iTY61Y0GU-XHN4nYXKfGHTzdRdovwq0Mo-vgqe9Vf5ae15TUCz4FOVTRhvhjBU4jDKYUZ3u_NXxhUX5UV8izhd2aTZSxGG0Dd-i8pXx9jmTrVqmtXIx9WjvWMhOTDlb82S1cjkGU1BTqoxMvj-gpuA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "tmx-correlation-id",
+								"value": "TEST-CORRELATION-ID",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:8072/license/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license?tmx-correlation-id=e3f6a72b-7d6c-41da-ac12-fb30fcd1e547",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8072",
+							"path": [
+								"license",
+								"v1",
+								"organization",
+								"d898a142-de44-466c-8c88-9ceb2c2429d3",
+								"license"
+							],
+							"query": [
+								{
+									"key": "tmx-correlation-id",
+									"value": "e3f6a72b-7d6c-41da-ac12-fb30fcd1e547"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get License with Discovery Gateway",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY4NDM4MTAsImlhdCI6MTY5Njg0MzUxMCwianRpIjoiOThhMGVmNGQtMjk5Mi00YzU5LTk3ZGYtNGIxNDFlOWVjNTYxIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjBkMjcwNDhhLWU4YzMtNGRkOC04NTBlLTZkMmYwYjlkZWVjYSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiI1OTAxNjY5NC1jMTczLTQyZDQtYjNkNS01MGRlZTRjNTdjNTAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJvc3RvY2siOnsicm9sZXMiOlsiQURNSU4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjU5MDE2Njk0LWMxNzMtNDJkNC1iM2Q1LTUwZGVlNGM1N2M1MCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJpbGxhcnkuaHVheWx1cG8iLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIifQ.NyiJo1wvV8hrJh8okA-y5EvWtaQMx6zlVuTPTaJJuNadPfSMkfp48lOQtRRfIxC-aQvjeBnDV9n_kITcmYy9sZAtvRCF-FO_e0EtzxjisC7Bm6GL7hTIwUz51tCU2PHAoWduxQslmJvbvzh24WBeW0jaDgbxjHfZhVLiEUsCII2TZF7wAQVCesMK-ZSMKTV4iTY61Y0GU-XHN4nYXKfGHTzdRdovwq0Mo-vgqe9Vf5ae15TUCz4FOVTRhvhjBU4jDKYUZ3u_NXxhUX5UV8izhd2aTZSxGG0Dd-i8pXx9jmTrVqmtXIx9WjvWMhOTDlb82S1cjkGU1BTqoxMvj-gpuA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8072/license/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license/f2a9c9d4-d2c0-44fa-97fe-724d77173c62?tmx-correlation-id=e3f6a72b-7d6c-41da-ac12-fb30fcd1e547",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8072",
+							"path": [
+								"license",
+								"v1",
+								"organization",
+								"d898a142-de44-466c-8c88-9ceb2c2429d3",
+								"license",
+								"f2a9c9d4-d2c0-44fa-97fe-724d77173c62"
+							],
+							"query": [
+								{
+									"key": "tmx-correlation-id",
+									"value": "e3f6a72b-7d6c-41da-ac12-fb30fcd1e547"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get License with RestTemplate Gateway",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY4NDM4MTAsImlhdCI6MTY5Njg0MzUxMCwianRpIjoiOThhMGVmNGQtMjk5Mi00YzU5LTk3ZGYtNGIxNDFlOWVjNTYxIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjBkMjcwNDhhLWU4YzMtNGRkOC04NTBlLTZkMmYwYjlkZWVjYSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiI1OTAxNjY5NC1jMTczLTQyZDQtYjNkNS01MGRlZTRjNTdjNTAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJvc3RvY2siOnsicm9sZXMiOlsiQURNSU4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjU5MDE2Njk0LWMxNzMtNDJkNC1iM2Q1LTUwZGVlNGM1N2M1MCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJpbGxhcnkuaHVheWx1cG8iLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIifQ.NyiJo1wvV8hrJh8okA-y5EvWtaQMx6zlVuTPTaJJuNadPfSMkfp48lOQtRRfIxC-aQvjeBnDV9n_kITcmYy9sZAtvRCF-FO_e0EtzxjisC7Bm6GL7hTIwUz51tCU2PHAoWduxQslmJvbvzh24WBeW0jaDgbxjHfZhVLiEUsCII2TZF7wAQVCesMK-ZSMKTV4iTY61Y0GU-XHN4nYXKfGHTzdRdovwq0Mo-vgqe9Vf5ae15TUCz4FOVTRhvhjBU4jDKYUZ3u_NXxhUX5UV8izhd2aTZSxGG0Dd-i8pXx9jmTrVqmtXIx9WjvWMhOTDlb82S1cjkGU1BTqoxMvj-gpuA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8072/license/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license/f2a9c9d4-d2c0-44fa-97fe-724d77173c62/rest?tmx-correlation-id=e3f6a72b-7d6c-41da-ac12-fb30fcd1e547",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8072",
+							"path": [
+								"license",
+								"v1",
+								"organization",
+								"d898a142-de44-466c-8c88-9ceb2c2429d3",
+								"license",
+								"f2a9c9d4-d2c0-44fa-97fe-724d77173c62",
+								"rest"
+							],
+							"query": [
+								{
+									"key": "tmx-correlation-id",
+									"value": "e3f6a72b-7d6c-41da-ac12-fb30fcd1e547"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get License with Netflix feign Gateway",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY4NDM4MTAsImlhdCI6MTY5Njg0MzUxMCwianRpIjoiOThhMGVmNGQtMjk5Mi00YzU5LTk3ZGYtNGIxNDFlOWVjNTYxIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjBkMjcwNDhhLWU4YzMtNGRkOC04NTBlLTZkMmYwYjlkZWVjYSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiI1OTAxNjY5NC1jMTczLTQyZDQtYjNkNS01MGRlZTRjNTdjNTAiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJvc3RvY2siOnsicm9sZXMiOlsiQURNSU4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjU5MDE2Njk0LWMxNzMtNDJkNC1iM2Q1LTUwZGVlNGM1N2M1MCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJpbGxhcnkuaHVheWx1cG8iLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIifQ.NyiJo1wvV8hrJh8okA-y5EvWtaQMx6zlVuTPTaJJuNadPfSMkfp48lOQtRRfIxC-aQvjeBnDV9n_kITcmYy9sZAtvRCF-FO_e0EtzxjisC7Bm6GL7hTIwUz51tCU2PHAoWduxQslmJvbvzh24WBeW0jaDgbxjHfZhVLiEUsCII2TZF7wAQVCesMK-ZSMKTV4iTY61Y0GU-XHN4nYXKfGHTzdRdovwq0Mo-vgqe9Vf5ae15TUCz4FOVTRhvhjBU4jDKYUZ3u_NXxhUX5UV8izhd2aTZSxGG0Dd-i8pXx9jmTrVqmtXIx9WjvWMhOTDlb82S1cjkGU1BTqoxMvj-gpuA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8072/license/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license/f2a9c9d4-d2c0-44fa-97fe-724d77173c62/feign?tmx-correlation-id=e3f6a72b-7d6c-41da-ac12-fb30fcd1e547",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8072",
+							"path": [
+								"license",
+								"v1",
+								"organization",
+								"d898a142-de44-466c-8c88-9ceb2c2429d3",
+								"license",
+								"f2a9c9d4-d2c0-44fa-97fe-724d77173c62",
+								"feign"
+							],
+							"query": [
+								{
+									"key": "tmx-correlation-id",
+									"value": "e3f6a72b-7d6c-41da-ac12-fb30fcd1e547"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Create Organization",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"e6a625cc-718b-48c2-ac76-1dfdff9a531e\",\n\t\"name\":\"Ostock\",\n\t\"contactName\":\"Illary Huaylupo\",\n\t\"contactEmail\":\"illaryhs@gmail.com\",\n\t\"contactPhone\":\"888888888\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/organization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Organization",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"e6a625cc-718b-48c2-ac76-1dfdff9a531e\",\n\t\"name\":\"Ostock\",\n\t\"contactName\":\"Illary Huaylupo\",\n\t\"contactEmail\":\"illaryhs@gmail.com\",\n\t\"contactPhone\":\"888888888\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/organization",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"organization"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Organization",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY3NDUyNDksImlhdCI6MTY5Njc0NDk0OSwianRpIjoiNDVhMTc5MzEtNDNlZS00ZTQzLTk2YWEtNTcyYTExZTE1ZmJkIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6ImMzNzhmZjVhLWY2ZjQtNDJmZi05NTA1LWNhYTAzNTkzNDU0YyIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiIyZDcwYzE1Ni1mY2JmLTQwMjUtYTFkNy0yMDdjOGMzZjU5NTUiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stdXNlciJdfSwicmVzb3VyY2VfYWNjZXNzIjp7Im9zdG9jayI6eyJyb2xlcyI6WyJVU0VSIl19LCJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiIyZDcwYzE1Ni1mY2JmLTQwMjUtYTFkNy0yMDdjOGMzZjU5NTUiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImpvaG4uY2FybmVsbCIsImdpdmVuX25hbWUiOiIiLCJmYW1pbHlfbmFtZSI6IiJ9.G5m8jIGdMz0p8L6wyHZJeGu0D0_9BDIwCULPgsW_tg4ckpM-ocEbnMkJ8dIod_t6VvrahiZ2ivBRbvJOnvGA3E8IhiaoUPRYesy__IwUnFwZs7W8PwAJ6nH-eIqsh7JBN4wVt-bo1VXAE7r9x1eEMvOdjfucNQqSoYG6-LS6qMciel0O16TbmrN54Oo6F2ugsdQfMI8QKVeGaMi_6KDbaQ8pWu1f0x7UyNRmCXWo5PZh6-8bmjFBqvucMUdagbgL3-o5YSudKxKBN9nOXUQQdK6VErl_S3hTvHPzAaHWjbQCAxeUInae4RHZ7UXOarf6WC9zKkABfaUfcq6cFLKKrg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8081/v1/organization/e6a625cc-718b-48c2-ac76-1dfdff9a531e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"organization",
+						"e6a625cc-718b-48c2-ac76-1dfdff9a531e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Organization",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"e6a625cc-718b-48c2-ac76-1dfdff9a531e\",\n\t\"name\":\"Ostock\",\n\t\"contactName\":\"Illary Huaylupo\",\n\t\"contactEmail\":\"illaryhs@gmail.com\",\n\t\"contactPhone\":\"888888888\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/organization/e6a625cc-718b-48c2-ac76-1dfdff9a531e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"organization",
+						"e6a625cc-718b-48c2-ac76-1dfdff9a531e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eureka Organization REST API",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8070/eureka/apps/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8070",
+					"path": [
+						"eureka",
+						"apps",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get License",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license/f2a9c9d4-d2c0-44fa-97fe-724d77173c62",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"v1",
+						"organization",
+						"d898a142-de44-466c-8c88-9ceb2c2429d3",
+						"license",
+						"f2a9c9d4-d2c0-44fa-97fe-724d77173c62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get License by Organization",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTRTYtRW94V0wyWGZnMkk5QmRNRGFSQlZzRmpCZkt5OF93LS1sTkF1ejhFIn0.eyJleHAiOjE2OTY3NDg2MjIsImlhdCI6MTY5Njc0ODMyMiwianRpIjoiNTZhODEyYjYtZmI2Mi00OTVhLWFmZmMtYzQyNGUzMzQ0MzBmIiwiaXNzIjoiaHR0cDovL2tleWNsb2FrOjgwODAvcmVhbG1zL3NwbWlhLXJlYWxtIiwiYXVkIjoiYWNjb3VudCIsInN1YiI6IjBkMjcwNDhhLWU4YzMtNGRkOC04NTBlLTZkMmYwYjlkZWVjYSIsInR5cCI6IkJlYXJlciIsImF6cCI6Im9zdG9jayIsInNlc3Npb25fc3RhdGUiOiJiNjU3Y2EyMy05NTRjLTRlNDctOTkyNC1jZDFjMzczNjdjNGEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiKiJdLCJyZWFsbV9hY2Nlc3MiOnsicm9sZXMiOlsib2ZmbGluZV9hY2Nlc3MiLCJkZWZhdWx0LXJvbGVzLXNwbWlhLXJlYWxtIiwidW1hX2F1dGhvcml6YXRpb24iLCJvc3RvY2stYWRtaW4iXX0sInJlc291cmNlX2FjY2VzcyI6eyJvc3RvY2siOnsicm9sZXMiOlsiQURNSU4iXX0sImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6ImI2NTdjYTIzLTk1NGMtNGU0Ny05OTI0LWNkMWMzNzM2N2M0YSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJpbGxhcnkuaHVheWx1cG8iLCJnaXZlbl9uYW1lIjoiIiwiZmFtaWx5X25hbWUiOiIifQ.JMshYjcT1dgZ4SPgMWOHLm4oduz__80seCbrlA-AeYwiUyBP0wJSJ2N56_Fz-AWAKffK3w-N1GTszRBB2poIDiNhksTL-R3cUDP2grfS7c-lnot7oFyYpNHdvSr4TbieVmodwKlZ92fWnU0K4xPEjfayNdL3C5NcXneAT-7TTooZ9LpPjPalA2DGF0E9VmF0iWQnot0PVSW2B6dOMGG5QKlhE8j-h6xcSmMtq4UpkVigSUrhg9-OzUX_nTgq8XZVAT7pm2hN0aPISUwF2G9DnW5jOxBESPF8C26aW16J9aaJFo5M5AJ3cpTiqn1izfzaktvkRrXupWcBPqdigVTtMg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "tmx-correlation-id",
+						"value": "TEST-CORRELATION-ID",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8180/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"v1",
+						"organization",
+						"d898a142-de44-466c-8c88-9ceb2c2429d3",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get License with Discovery",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license/f2a9c9d4-d2c0-44fa-97fe-724d77173c62",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"v1",
+						"organization",
+						"d898a142-de44-466c-8c88-9ceb2c2429d3",
+						"license",
+						"f2a9c9d4-d2c0-44fa-97fe-724d77173c62"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get License with RestTemplate",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license/f2a9c9d4-d2c0-44fa-97fe-724d77173c62/rest",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"v1",
+						"organization",
+						"d898a142-de44-466c-8c88-9ceb2c2429d3",
+						"license",
+						"f2a9c9d4-d2c0-44fa-97fe-724d77173c62",
+						"rest"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get License with Netflix feign",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license/f2a9c9d4-d2c0-44fa-97fe-724d77173c62/feign",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"v1",
+						"organization",
+						"d898a142-de44-466c-8c88-9ceb2c2429d3",
+						"license",
+						"f2a9c9d4-d2c0-44fa-97fe-724d77173c62",
+						"feign"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create License",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Language",
+						"value": "es",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"organizationId\":\"e839ee96-28de-4f67-bb79-870ca89743a0\",\n\t\"description\":\"Software product\",\n\t\"productName\":\"Ostock\",\n\t\"licenseType\":\"complete\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8180/v1/organization/e43e57ea-39cf-42bf-a8a5-2126b5a36762/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"v1",
+						"organization",
+						"e43e57ea-39cf-42bf-a8a5-2126b5a36762",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update License",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"licenseId\":\"f2a9c9d4-d2c0-44fa-97fe-724d77173c62\",\n\t\"organizationId\":\"d898a142-de44-466c-8c88-9ceb2c2429d3\",\n\t\"description\":\"Software development product\",\n\t\"productName\":\"Ostock-lic\",\n\t\"licenseType\":\"partial\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8180/v1/organization/d898a142-de44-466c-8c88-9ceb2c2429d3/license",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"v1",
+						"organization",
+						"d898a142-de44-466c-8c88-9ceb2c2429d3",
+						"license"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete License",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8180/v1/organization/e839ee96-28de-4f67-bb79-870ca89743a0/license/279709ff-e6d5-4a54-8b55-a5c37542025b",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8180",
+					"path": [
+						"v1",
+						"organization",
+						"e839ee96-28de-4f67-bb79-870ca89743a0",
+						"license",
+						"279709ff-e6d5-4a54-8b55-a5c37542025b"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

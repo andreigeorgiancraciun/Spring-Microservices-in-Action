@@ -28,12 +28,13 @@ public class LicenseController {
     }
 
     @GetMapping(value = "/{licenseId}/{clientType}")
-    public License getLicensesWithClient(@PathVariable("organizationId") String organizationId,
-                                         @PathVariable("licenseId") String licenseId,
-                                         @PathVariable("clientType") String clientType,
-                                         @RequestHeader("Authorization") String authorization) {
+    public ResponseEntity<License> getLicensesWithClient(@PathVariable("organizationId") String organizationId,
+                                                         @PathVariable("licenseId") String licenseId,
+                                                         @PathVariable("clientType") String clientType,
+                                                         @RequestHeader("Authorization") String authorization) {
 
-        return licenseService.getLicense(licenseId, organizationId, clientType, authorization);
+        License license = licenseService.getLicense(licenseId, organizationId, clientType, authorization);
+        return ResponseEntity.ok(license);
     }
 
     @PutMapping
@@ -52,7 +53,8 @@ public class LicenseController {
     }
 
     @GetMapping
-    public List<License> getLicenses(@PathVariable("organizationId") String organizationId) throws TimeoutException {
-        return licenseService.getLicensesByOrganization(organizationId);
+    public ResponseEntity<List<License>> getLicenses(@PathVariable("organizationId") String organizationId) throws TimeoutException {
+        List<License> licenses = licenseService.getLicensesByOrganization(organizationId);
+        return ResponseEntity.ok(licenses);
     }
 }
